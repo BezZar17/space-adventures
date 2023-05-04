@@ -8,17 +8,21 @@
     <script src="app.js"></script>
 
     <title>Space Adventures</title>
-    <header>
-        <h1>Space Adventures</h1>
-    <div class="score-container">
-        <div id="bestScore">Best:</div>
-        <div id="currentScore">Current:</div>
-      </div>
-
-      
-    </header>
+    
 </head>
 <body>
-    
+    <div class="main-features">
+        <div>
+          <h1>Space Adventures</h1>
+          <p>Score: <span id="score">0</span></p>
+        </div>
+
+        <div class="grid">
+            <canvas id="board"></canvas>
+          </div>
+
+        <button onclick="play()" class="play-button">Play</button>
+      </div>
+
 </body>
 </html>

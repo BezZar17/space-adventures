@@ -1,18 +1,7 @@
-body{
-    background-color: blueviolet;
-    background-image: url("https://opengameart.org/sites/default/files/bg_02_h.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
+        text-align: center;
 }
 
-.score-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 20px;
-    background: #444;
-  }
-
-h1{
-    color: antiquewhite;
-    text-align: center;
+#board{
+    background-image: url("/assets/images/bg_02_h.png");
 }
