@@ -1,6 +1,8 @@
 body{
     background-color: blueviolet;
     background-image: url("https://opengameart.org/sites/default/files/bg_02_h.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .score-container {
