@@ -23,8 +23,8 @@ let ship = {
 //asteriod
 
 let asteriodArray= []
-let asteriodWidth = 150
-let asteriodHieght = 200
+let asteriodWidth = 314
+let asteriodHieght = 250
 let asteriodX = boardWidth
 let asteriodY = 0
 
@@ -34,6 +34,11 @@ let bottomAsteriodImg
 //physics
 
 let velocityX = -2 // asteriods moving left
+let velocityY = 0 //ship fly up speed
+let gravity = 0.4
+
+let gameOver = false
+let score = 0
 
 window.onload = function(){
     board = document.getElementById("board")
@@ -55,36 +60,111 @@ window.onload = function(){
     bottomAsteriodImg.src = "/assets/images/asteriod.png"
 
     requestAnimationFrame(update);
-    setInterval(placeAsteriods, 2000) //every 2 seconds
+    setInterval(placeAsteriods, 3000) //every 2 seconds
+    document.addEventListener("keydown", moveShip)
 }
 
 function update(){
     requestAnimationFrame(update);
+    if(gameOver){
+        return
+    }
     context.clearRect(0, 0, board.width, board.height)
 
 
 //spaceship
+velocityY += gravity
+ship.y = Math.max(ship.y + velocityY, 0) //apply gravity ship, limit ship to top of canvas
 context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height)
+
+if (ship.y > boardHeight){
+    gameOver = true
+}
+
 
 //asteriod
  for(let i = 0; i < asteriodArray.length; i++){
     let asteriod = asteriodArray[i]
     asteriod.x += velocityX
     context.drawImage(asteriod.img, asteriod.x, asteriod.y, asteriod.width, asteriod.height)
+
+    if(!asteriod.passed && ship.x > ship.x + ship.width){
+        score += 0.5 // because there are two astriods
+        asteriod.passed = true
+    }
+
+    if (detectCollision(ship, asteriod)){
+        gameOver = true
+    }
+
  }
+
+//score
+context.fillStyle = "white"
+context.font = "45px sans-serif"
+context.fillText(score, 5, 45)
+
+if(gameOver){
+    context.fillText("GAME OVER", 5, 90)
+}
 
 }
 
+
 function placeAsteriods(){
+
+    if (gameOver){
+        return
+    }
+
+    let randomAsteriodY = asteriodY - asteriodHieght/4 - Math.random()*(asteriodHieght/2)
+    let openingSpace = board.height/4
+
     let topAsteriod = {
         img : topAsteriodImg,
         x : asteriodX,
-        y : asteriodY,
+        y : randomAsteriodY,
         width : asteriodWidth,
         height : asteriodHieght,
         passed : false
     }
 
+    let bottomAsteriod = {
+        img : bottomAsteriodImg,
+        x: asteriodX,
+        y: randomAsteriodY + asteriodHieght + openingSpace,
+        width: asteriodWidth,
+        height: asteriodHieght,
+        passed: false
+
+    }
+    asteriodArray.push(bottomAsteriod)
+    
+
     asteriodArray.push(topAsteriod)
 
+}
+
+function moveShip(e){
+    if (e.code == "Space" || e.code == "ArrowUp"){
+
+        //fly
+        velocityY = -6
+
+        //reset game
+        if(gameOver){
+            ship.y = shipY
+            asteriodArray = []
+            score = 0
+            gameOver = false
+        }
+
+    }
+}
+
+function detectCollision (a, b) {
+    return a.x < b.x + b.width &&
+            a.x + a.width > b.x &&
+            a.y < b.y + b.height &&
+            a.y + a.height > b.y;
 }
