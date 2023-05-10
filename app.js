@@ -2,7 +2,7 @@
 //board
 let board
 let boardWidth = 800
-let boardHeight = 500
+let boardHeight = 700
 let context
 
 
@@ -88,7 +88,7 @@ if (ship.y > boardHeight){
     asteriod.x += velocityX
     context.drawImage(asteriod.img, asteriod.x, asteriod.y, asteriod.width, asteriod.height)
 
-    if(!asteriod.passed && ship.x > ship.x + ship.width){
+    if(!asteriod.passed && ship.x > asteriod.x + asteriod.width){
         score += 0.5 // because there are two astriods
         asteriod.passed = true
     }
