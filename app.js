@@ -2,7 +2,7 @@
 //board
 let board
 let boardWidth = 800
-let boardHeight = 700
+let boardHeight = 500
 let context
 
 
@@ -57,7 +57,7 @@ window.onload = function(){
     topAsteriodImg.src = "/assets/images/asteriod.png"
 
     bottomAsteriodImg = new Image()
-    bottomAsteriodImg.src = "/assets/images/asteriod.png"
+    bottomAsteriodImg.src = "/assets/images/asteriod.png" 
 
     requestAnimationFrame(update);
     setInterval(placeAsteriods, 3000) //every 2 seconds
@@ -118,7 +118,7 @@ function placeAsteriods(){
     }
 
     let randomAsteriodY = asteriodY - asteriodHieght/4 - Math.random()*(asteriodHieght/2)
-    let openingSpace = board.height/4
+    let openingSpace = board.height/3
 
     let topAsteriod = {
         img : topAsteriodImg,
