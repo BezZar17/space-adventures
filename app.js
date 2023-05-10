@@ -77,7 +77,7 @@ velocityY += gravity
 ship.y = Math.max(ship.y + velocityY, 0) //apply gravity ship, limit ship to top of canvas
 context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height)
 
-if (ship.y > boardHeight){
+if (ship.y > board.height){
     gameOver = true
 }
 
