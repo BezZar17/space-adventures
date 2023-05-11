@@ -1,8 +1,8 @@
 
 //board
 let board
-let boardWidth = 800
-let boardHeight = 500
+let boardWidth = 500
+let boardHeight = 550
 let context
 
 
@@ -23,7 +23,7 @@ let ship = {
 //asteriod
 
 let asteriodArray= []
-let asteriodWidth = 314
+let asteriodWidth = 250
 let asteriodHieght = 250
 let asteriodX = boardWidth
 let asteriodY = 0
@@ -118,7 +118,7 @@ function placeAsteriods(){
     }
 
     let randomAsteriodY = asteriodY - asteriodHieght/4 - Math.random()*(asteriodHieght/2)
-    let openingSpace = board.height/3
+    let openingSpace = board.height/4
 
     let topAsteriod = {
         img : topAsteriodImg,
@@ -128,6 +128,8 @@ function placeAsteriods(){
         height : asteriodHieght,
         passed : false
     }
+
+    asteriodArray.push(topAsteriod)
 
     let bottomAsteriod = {
         img : bottomAsteriodImg,
@@ -141,7 +143,7 @@ function placeAsteriods(){
     asteriodArray.push(bottomAsteriod)
     
 
-    asteriodArray.push(topAsteriod)
+    
 
 }
 
