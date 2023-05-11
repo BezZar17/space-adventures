@@ -48,16 +48,16 @@ window.onload = function(){
 
     //load imgs
     shipImg = new Image()
-    shipImg.src = "/assets/images/pngegg.png"
+    shipImg.src = "./assets/images/pngegg.png"
     shipImg.onload = function() {
         context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height)
     }
 
     topAsteriodImg = new Image()
-    topAsteriodImg.src = "/assets/images/asteriod.png"
+    topAsteriodImg.src = "./assets/images/asteriod.png"
 
     bottomAsteriodImg = new Image()
-    bottomAsteriodImg.src = "/assets/images/asteriod.png" 
+    bottomAsteriodImg.src = "./assets/images/asteriod.png" 
 
     requestAnimationFrame(update);
     setInterval(placeAsteriods, 3000) //every 2 seconds
