@@ -1,7 +1,7 @@
 
 //board
 let board
-let boardWidth = 500
+let boardWidth = 700
 let boardHeight = 550
 let context
 
@@ -39,6 +39,7 @@ let gravity = 0.4
 
 let gameOver = false
 let score = 0
+let scoreHigh = 0 
 
 window.onload = function(){
     board = document.getElementById("board")
@@ -92,6 +93,10 @@ if (ship.y > board.height){
         score += 0.5 // because there are two astriods
         asteriod.passed = true
     }
+    //check high score
+    if (score > scoreHigh){
+        scoreHigh = score
+    }
 
     if (detectCollision(ship, asteriod)){
         gameOver = true
@@ -104,8 +109,13 @@ context.fillStyle = "white"
 context.font = "45px sans-serif"
 context.fillText(score, 5, 45)
 
+//draw highscore
+context.fillStyle = "white"
+context.font = "45px sans-serif"
+context.fillText("Best:  " + scoreHigh, 5, 90)
+
 if(gameOver){
-    context.fillText("GAME OVER", 5, 90)
+    context.fillText("GAME OVER", 5, 135 )
 }
 
 }
@@ -118,7 +128,7 @@ function placeAsteriods(){
     }
 
     let randomAsteriodY = asteriodY - asteriodHieght/4 - Math.random()*(asteriodHieght/2)
-    let openingSpace = board.height/4
+    let openingSpace = board.height/3
 
     let topAsteriod = {
         img : topAsteriodImg,
@@ -165,8 +175,7 @@ function moveShip(e){
 }
 
 function detectCollision (a, b) {
-    return a.x < b.x + b.width &&
-            a.x + a.width > b.x &&
-            a.y < b.y + b.height &&
-            a.y + a.height > b.y;
+    return Math.sqrt((b.x - a.x - a.width/2)**2 + (b.y - a.y - a.width/2)**2) < a.width
 }
+
+
