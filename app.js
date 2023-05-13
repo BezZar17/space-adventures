@@ -1,9 +1,10 @@
 
 //board
 let board
-let boardWidth = 700
+let boardWidth = 1000
 let boardHeight = 550
 let context
+
 
 
 //spaceship
@@ -17,14 +18,15 @@ let ship = {
     x : shipX,
     y : shipY,
     width : shipWidth,
-    height : shipHeight
+    height : shipHeight,
+    
 }
 
 //asteriod
 
 let asteriodArray= []
-let asteriodWidth = 250
-let asteriodHieght = 250
+let asteriodWidth = 300
+let asteriodHieght = 300
 let asteriodX = boardWidth
 let asteriodY = 0
 
@@ -55,13 +57,13 @@ window.onload = function(){
     }
 
     topAsteriodImg = new Image()
-    topAsteriodImg.src = "./assets/images/asteriod.png"
+    topAsteriodImg.src = './assets/images/asteriod.png'
 
     bottomAsteriodImg = new Image()
-    bottomAsteriodImg.src = "./assets/images/asteriod.png" 
+    bottomAsteriodImg.src = './assets/images/asteriod.png'
 
     requestAnimationFrame(update);
-    setInterval(placeAsteriods, 3000) //every 2 seconds
+    setInterval(placeAsteriods, 2500) //every 2.5 seconds
     document.addEventListener("keydown", moveShip)
 }
 
@@ -99,19 +101,19 @@ if (ship.y > board.height){
     }
 
     if (detectCollision(ship, asteriod)){
-        gameOver = true
+       gameOver = true
     }
 
  }
 
 //score
-context.fillStyle = "white"
-context.font = "45px sans-serif"
+context.fillStyle = "antiquewhite"
+context.font = "45px fantasy   "
 context.fillText(score, 5, 45)
 
 //draw highscore
-context.fillStyle = "white"
-context.font = "45px sans-serif"
+context.fillStyle = "antiquewhite"
+context.font = "45px fantasy "
 context.fillText("Best:  " + scoreHigh, 5, 90)
 
 if(gameOver){
@@ -174,8 +176,12 @@ function moveShip(e){
     }
 }
 
-function detectCollision (a, b) {
-    return Math.sqrt((b.x - a.x - a.width/2)**2 + (b.y - a.y - a.width/2)**2) < a.width
+
+function detectCollision(ship,asteriod){
+    return ship.x < (asteriod.x + asteriod.width)/1.2 &&
+    (ship.x + ship.width)/1.2 > asteriod.x &&
+    ship.y < (asteriod.y + asteriod.height)/1.2 &&
+    (ship.y + ship.height)/1.2 > asteriod.y
 }
 
 

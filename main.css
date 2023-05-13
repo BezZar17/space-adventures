@@ -1,7 +1,17 @@
 body {
         text-align: center;
+        background-image: url('./assets/images/bg_02_h.png');
+        background-repeat: no-repeat;
+        background-size: 100%;
 }
 
 #board{
     background-image: url("./assets/images/bg_02_h.png");
 }
+
+h1, p {
+    color: antiquewhite;
+    font-family: fantasy;
+    
+}
+
