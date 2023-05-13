@@ -1,5 +1,5 @@
 
-//board
+//game board
 let board
 let boardWidth = 1000
 let boardHeight = 550
@@ -67,6 +67,7 @@ window.onload = function(){
     document.addEventListener("keydown", moveShip)
 }
 
+// when gameover clear game and restart
 function update(){
     requestAnimationFrame(update);
     if(gameOver){
@@ -80,12 +81,13 @@ velocityY += gravity
 ship.y = Math.max(ship.y + velocityY, 0) //apply gravity ship, limit ship to top of canvas
 context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height)
 
+// ship hits bottom of boader, gameover
 if (ship.y > board.height){
     gameOver = true
 }
 
 
-//asteriod
+//asteriod physics
  for(let i = 0; i < asteriodArray.length; i++){
     let asteriod = asteriodArray[i]
     asteriod.x += velocityX
@@ -99,30 +101,31 @@ if (ship.y > board.height){
     if (score > scoreHigh){
         scoreHigh = score
     }
-
+    //collision
     if (detectCollision(ship, asteriod)){
        gameOver = true
     }
 
  }
 
-//score
+//score text
 context.fillStyle = "antiquewhite"
 context.font = "45px fantasy   "
 context.fillText(score, 5, 45)
 
-//draw highscore
+//highscore text
 context.fillStyle = "antiquewhite"
 context.font = "45px fantasy "
 context.fillText("Best:  " + scoreHigh, 5, 90)
 
+//gameover text
 if(gameOver){
     context.fillText("GAME OVER", 5, 135 )
 }
 
 }
 
-
+//placing asteroids randomly
 function placeAsteriods(){
 
     if (gameOver){
@@ -130,6 +133,7 @@ function placeAsteriods(){
     }
 
     let randomAsteriodY = asteriodY - asteriodHieght/4 - Math.random()*(asteriodHieght/2)
+    //gap between asteroids
     let openingSpace = board.height/3
 
     let topAsteriod = {
@@ -159,6 +163,7 @@ function placeAsteriods(){
 
 }
 
+//controls
 function moveShip(e){
     if (e.code == "Space" || e.code == "ArrowUp"){
 
@@ -176,7 +181,7 @@ function moveShip(e){
     }
 }
 
-
+// collision function
 function detectCollision(ship,asteriod){
     return ship.x < (asteriod.x + asteriod.width)/1.2 &&
     (ship.x + ship.width)/1.2 > asteriod.x &&
