@@ -21,3 +21,27 @@ Space Adventures is a web game similar to the famous app game "Flappy Bird". In 
     * Creating new obstacles after a certain part of the game
     * Add coins that you can collect to by a new spaceship
     * Add different styles of spaceships for to player to by
+
+## Controls
+Fly up: spacebar or arrowup key
+
+
+## Credits
+Background image: https://le-professeur-stagiaire.itch.io/
+Ship image: https://www.pngegg.com/en/png-bfdnc
+Asteroid image: https://img.itch.zone/aW1nLzM2Nzc0NDAucG5n/315x250%23c/t26Llb.png
+
+## Code Help/Insperation: 
+Audio code : https://www.youtube.com/watch?v=UHjTXLAS4tU
+Collisition Code : https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Collision_detection
+
+## Project Planning
+
+| Date | Goals |
+| ---- | ----- |
+| Mon. 2/13 | Create GitHub repository. Complete README.md. |
+| Wed. 2/15 |      |
+| Sat. 2/18 |      |
+| Mon. 2/20 |      |
+| Wed. 2/22 |      |
+| Sat. 2/25 | Deploy to GitHub Pages. Submit completed project. Project presentations. |
