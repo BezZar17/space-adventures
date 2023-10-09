@@ -1,0 +1,19 @@
+@import "./colors";
+$font: fantasy;
+$background-image: url("../assets/images/bg_02_h.png");
+
+body{
+    background-color: $background-color;
+    text-align: center;
+}
+
+#board{
+    background-image: $background-image;
+}
+
+h1, p {
+    color:$primary-color;
+    font-family: $font;
+    
+}
+

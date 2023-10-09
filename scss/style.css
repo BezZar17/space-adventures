@@ -1,0 +1,13 @@
+body {
+  background-color: #c0c0c0;
+  text-align: center;
+}
+
+#board {
+  background-image: url("../assets/images/bg_02_h.png");
+}
+
+h1, p {
+  color: antiquewhite;
+  font-family: fantasy;
+}/*# sourceMappingURL=style.css.map */
